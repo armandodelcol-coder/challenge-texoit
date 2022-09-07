@@ -2,7 +2,7 @@ import sqlite3
 
 from flask import jsonify
 
-from src.winners_interval.response_dto import ResponseDto
+from src.winners_interval.min_max_service import MinMaxService
 
 
 class WinnersIntervalController:
@@ -10,12 +10,19 @@ class WinnersIntervalController:
     @staticmethod
     def get_minmax():
         con = sqlite3.connect("dev_database.db")
-
         cur = con.cursor()
-        query = cur.execute("SELECT producer, MAX(year), MIN(year), MAX(year) - MIN(year) as interval "
-                            "FROM golden_rasp_awards "
-                            "WHERE winner = 1 "
-                            "GROUP BY producer HAVING interval > 0 ORDER BY interval ASC")
+        query = cur.execute("SELECT name, year "
+                            "FROM producers, indicated_movie_producers, indicated_movies "
+                            "WHERE producers.id = indicated_movie_producers.producer_id AND "
+                            "indicated_movie_producers.indicated_movie_id = indicated_movies.id AND "
+                            "winner = 1 "
+                            "ORDER BY year ASC")
         result = query.fetchall()
+
+        min_list, max_list = MinMaxService.get_min_max(result)
+
         con.close()
-        return jsonify(ResponseDto.to_min_max(result))
+        return jsonify(
+            min=min_list,
+            max=max_list
+        )
