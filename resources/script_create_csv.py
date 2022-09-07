@@ -1,9 +1,8 @@
 import csv
 import random
 
-
 if __name__ == '__main__':
-    fieldnames = ['title', 'producer', 'year', 'winner']
+    fieldnames = ['year', 'title', 'studios', 'producers', 'winner']
     producers = [f'Producer {p}' for p in range(1, 15)]
     rows = []
     winners_year = []
@@ -16,14 +15,15 @@ if __name__ == '__main__':
                     winners_year.append(year)
             rows.append(
                 {
-                    'title': f"Movie - {year} - {year_movie}",
-                    'producer': random.choice(producers),
                     'year': year,
+                    'title': f"Movie - {year} - {year_movie}",
+                    'studios': f"Studio - {year} - {year_movie}",
+                    'producers': random.choice(producers),
                     'winner': choice
                 }
             )
 
     with open('resources\goldenraspawardslist.csv', 'w', encoding='UTF8', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
         writer.writeheader()
         writer.writerows(rows)

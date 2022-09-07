@@ -6,7 +6,7 @@ from src.winners_interval.winners_interval_controller import WinnersIntervalCont
 app = Flask(__name__)
 
 InitDB.create()
-InitDB.populate('resources\goldenraspawardslist.csv')
+InitDB.populate('resources\movielist.csv')
 
 
 @app.route('/winnersinterval', methods=['GET'])
