@@ -21,9 +21,11 @@ year;title;studios;producers;winner
 
 - Python 3.8 or 3.9 versions
 
+Obs: These were the versions that passes the testa via CI in github actions
+
 ### Setup to execute
 
-**First, is mandatory it is mandatory to have it installed Python and Git**
+**First, is mandatory to have installed Python and Git**
 
 Clone the project:
 
