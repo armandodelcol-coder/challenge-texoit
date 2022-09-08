@@ -99,6 +99,7 @@ You can use the csv file with custom  Golden Raspberry Awards data.
 Ex:
 
 Default: `default_csv_file_path = Path("resources/goldenraspawardslist.csv")`
+
 Custom: `default_csv_file_path = Path("resources/yourcscfile.csv")`
 
 ### Conclusion
