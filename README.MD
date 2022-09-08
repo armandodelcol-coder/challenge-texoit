@@ -21,7 +21,7 @@ year;title;studios;producers;winner
 
 - Python 3.8 or 3.9 versions
 
-Obs: These were the versions that passes the testa via CI in github actions
+Obs: These were the versions that passed the tests via CI in github actions
 
 ### Setup to execute
 
