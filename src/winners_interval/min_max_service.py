@@ -12,7 +12,7 @@ class MinMaxService:
         max_interval = 0
         structured_winners_intervals = []
         for k, v in winner_years.items():
-            if len(v) >= 2:
+            while len(v) >= 2:
                 previous_win = v[-2]
                 following_win = v[-1]
                 interval = v[-1] - v[-2]
@@ -26,6 +26,7 @@ class MinMaxService:
                         "followingWin": following_win
                     }
                 )
+                v.pop()
         min_list = [wi for wi in structured_winners_intervals if wi['interval'] == min_interval]
         max_list = [wi for wi in structured_winners_intervals if wi['interval'] == max_interval]
 
