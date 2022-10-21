@@ -41,4 +41,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: adelcol/fullcycle3-ci-py:latest
+          tags: adelcol/challenge-texoit-ci:latest
